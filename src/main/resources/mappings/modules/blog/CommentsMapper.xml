@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.daydayup.beesite.modules.blog.dao.CommentsMapper">
+  <resultMap id="BaseResultMap" type="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="p_id" jdbcType="BIGINT" property="pId" />
+    <result column="c_id" jdbcType="BIGINT" property="cId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="device" jdbcType="VARCHAR" property="device" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, p_id, c_id, article_title, article_id, name, c_name, time, email, url, type, 
+    ip, device, address
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="me.daydayup.beesite.modules.blog.dao.entity.CommentsExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_comments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="me.daydayup.beesite.modules.blog.dao.entity.CommentsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_comments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    insert into tb_comments (id, p_id, c_id, article_title, 
+      article_id, name, c_name, 
+      time, email, url, 
+      type, ip, device, address, 
+      content)
+    values (#{id,jdbcType=BIGINT}, #{pId,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, 
+      #{articleId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{type,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    insert into tb_comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pId != null">
+        p_id,
+      </if>
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pId != null">
+        #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null">
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    <set>
+      <if test="pId != null">
+        p_id = #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null">
+        c_id = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    set p_id = #{pId,jdbcType=BIGINT},
+      c_id = #{cId,jdbcType=BIGINT},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_id = #{articleId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      c_name = #{cName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    set p_id = #{pId,jdbcType=BIGINT},
+      c_id = #{cId,jdbcType=BIGINT},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_id = #{articleId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      c_name = #{cName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="p_id" jdbcType="BIGINT" property="pId" />
+    <result column="c_id" jdbcType="BIGINT" property="cId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="device" jdbcType="VARCHAR" property="device" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, p_id, c_id, article_title, article_id, name, c_name, time, email, url, type, 
+    ip, device, address
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    insert into tb_comments (id, p_id, c_id, article_title, 
+      article_id, name, c_name, 
+      time, email, url, 
+      type, ip, device, address, 
+      content)
+    values (#{id,jdbcType=BIGINT}, #{pId,jdbcType=BIGINT}, #{cId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, 
+      #{articleId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{type,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    insert into tb_comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pId != null">
+        p_id,
+      </if>
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pId != null">
+        #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null">
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    <set>
+      <if test="pId != null">
+        p_id = #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="cId != null">
+        c_id = #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    set p_id = #{pId,jdbcType=BIGINT},
+      c_id = #{cId,jdbcType=BIGINT},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_id = #{articleId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      c_name = #{cName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.daydayup.beesite.modules.blog.dao.entity.Comments">
+    update tb_comments
+    set p_id = #{pId,jdbcType=BIGINT},
+      c_id = #{cId,jdbcType=BIGINT},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_id = #{articleId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      c_name = #{cName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,4 +1,4 @@
-package me.daydayup.beesite.modules.test.web;
+package me.daydayup.beesite.modules.blog.web;
 
 import me.daydayup.beesite.common.web.BaseController;
 import me.daydayup.beesite.modules.test.dto.TestDto;
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2019/4/21
  */
 @Controller
-@RequestMapping(value = "/test")
-public class TestController extends BaseController {
+@RequestMapping(value = "/blog/article")
+public class ArticleController extends BaseController {
 
     @Autowired
     private TestService testService;
 
-    @RequestMapping(value = "test001", produces = "text/xml;charset=utf-8")
+    @RequestMapping(value = "find", produces = "text/xml;charset=utf-8")
     @ResponseBody
     public String get() {
         TestDto testDto = testService.getDto("0");
