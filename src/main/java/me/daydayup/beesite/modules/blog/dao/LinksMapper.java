@@ -1,15 +1,17 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import me.daydayup.beesite.common.persistence.annotation.MyBatisDao;
+import java.util.List;
 import me.daydayup.beesite.modules.blog.dao.entity.Links;
+import me.daydayup.beesite.modules.blog.dao.entity.LinksExample;
 
-@MyBatisDao
 public interface LinksMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(Links record);
 
     int insertSelective(Links record);
+
+    List<Links> selectByExample(LinksExample example);
 
     Links selectByPrimaryKey(Long id);
 

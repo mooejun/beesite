@@ -1,15 +1,17 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import me.daydayup.beesite.common.persistence.annotation.MyBatisDao;
+import java.util.List;
 import me.daydayup.beesite.modules.blog.dao.entity.ArticleCategory;
+import me.daydayup.beesite.modules.blog.dao.entity.ArticleCategoryExample;
 
-@MyBatisDao
 public interface ArticleCategoryMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(ArticleCategory record);
 
     int insertSelective(ArticleCategory record);
+
+    List<ArticleCategory> selectByExample(ArticleCategoryExample example);
 
     ArticleCategory selectByPrimaryKey(Long id);
 

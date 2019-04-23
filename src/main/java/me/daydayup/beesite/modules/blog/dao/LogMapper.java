@@ -1,15 +1,17 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import me.daydayup.beesite.common.persistence.annotation.MyBatisDao;
+import java.util.List;
 import me.daydayup.beesite.modules.blog.dao.entity.Log;
+import me.daydayup.beesite.modules.blog.dao.entity.LogExample;
 
-@MyBatisDao
 public interface LogMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(Log record);
 
     int insertSelective(Log record);
+
+    List<Log> selectByExample(LogExample example);
 
     Log selectByPrimaryKey(Long id);
 

@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional(readOnly = true)
-public class TestService extends BaseService {
+//public class TestService extends BaseService {
+public class TestService {
 
     @Autowired
     private TestMapper testMapper;

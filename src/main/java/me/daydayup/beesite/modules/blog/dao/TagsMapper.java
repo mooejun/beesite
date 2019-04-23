@@ -1,15 +1,17 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import me.daydayup.beesite.common.persistence.annotation.MyBatisDao;
+import java.util.List;
 import me.daydayup.beesite.modules.blog.dao.entity.Tags;
+import me.daydayup.beesite.modules.blog.dao.entity.TagsExample;
 
-@MyBatisDao
 public interface TagsMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(Tags record);
 
     int insertSelective(Tags record);
+
+    List<Tags> selectByExample(TagsExample example);
 
     Tags selectByPrimaryKey(Long id);
 
