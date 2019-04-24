@@ -1,25 +1,31 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import com.github.pagehelper.Page;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.Comments;
-import me.daydayup.beesite.modules.blog.dao.entity.CommentsExample;
+import org.apache.ibatis.annotations.Param;
 
-public interface CommentsMapper {
-    int deleteByPrimaryKey(Long id);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface CommentsMapper extends BeesiteMapper<Comments> {
 
-    int insert(Comments record);
+    /**
+     * 分页查询指定文章的评论数据
+     *
+     * @param articleId
+     * @param sort
+     * @return
+     */
+    Page<Comments> findCommentsList(@Param("articleId") int articleId, @Param("sort") int sort);
 
-    int insertSelective(Comments record);
-
-    List<Comments> selectByExampleWithBLOBs(CommentsExample example);
-
-    List<Comments> selectByExample(CommentsExample example);
-
-    Comments selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Comments record);
-
-    int updateByPrimaryKeyWithBLOBs(Comments record);
-
-    int updateByPrimaryKey(Comments record);
+    /**
+     * 查询所有评论数据，用于从中筛选实现分页
+     *
+     * @param articleId
+     * @param sort
+     * @return
+     */
+    Page<Comments> findAllId(@Param("articleId") int articleId, @Param("sort") int sort);
 }

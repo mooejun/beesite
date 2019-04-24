@@ -1,21 +1,20 @@
 package me.daydayup.beesite.modules.blog.dao;
 
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
+import me.daydayup.beesite.modules.blog.dao.entity.Article;
+import me.daydayup.beesite.modules.blog.dao.entity.ArticleTags;
+import me.daydayup.beesite.modules.blog.dao.entity.Tags;
+
 import java.util.List;
-import me.daydayup.beesite.modules.blog.dao.entity.ArticleTag;
-import me.daydayup.beesite.modules.blog.dao.entity.ArticleTagExample;
 
-public interface ArticleTagMapper {
-    int deleteByPrimaryKey(Long id);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface ArticleTagMapper extends BeesiteMapper<ArticleTags> {
 
-    int insert(ArticleTag record);
+    List<Tags> findByArticleId(long articleId);
 
-    int insertSelective(ArticleTag record);
+    List<Article> findByTagName(String name);
 
-    List<ArticleTag> selectByExample(ArticleTagExample example);
-
-    ArticleTag selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(ArticleTag record);
-
-    int updateByPrimaryKey(ArticleTag record);
 }

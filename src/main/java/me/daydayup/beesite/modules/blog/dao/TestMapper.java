@@ -1,10 +1,16 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.Test;
 import me.daydayup.beesite.modules.blog.dao.entity.TestExample;
 
-public interface TestMapper {
+import java.util.List;
+
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface TestMapper extends BeesiteMapper<Test> {
     int deleteByPrimaryKey(String id);
 
     int insert(Test record);

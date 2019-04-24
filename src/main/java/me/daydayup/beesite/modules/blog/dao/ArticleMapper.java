@@ -1,26 +1,33 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import com.github.pagehelper.Page;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.Article;
-import me.daydayup.beesite.modules.blog.dao.entity.ArticleExample;
-import me.daydayup.beesite.modules.blog.dao.entity.ArticleWithBLOBs;
+import org.apache.ibatis.annotations.Select;
 
-public interface ArticleMapper {
-    int deleteByPrimaryKey(Long id);
+import java.util.List;
 
-    int insert(ArticleWithBLOBs record);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface ArticleMapper extends BeesiteMapper<ArticleMapper> {
 
-    int insertSelective(ArticleWithBLOBs record);
+    @Select("select * from tb_article where state = '1' order by id desc")
+    Page<Article> findByPageForSite();
 
-    List<ArticleWithBLOBs> selectByExampleWithBLOBs(ArticleExample example);
+    @Select("SELECT id FROM tb_article ORDER BY id DESC LIMIT 1")
+    long getLastId();
 
-    List<Article> selectByExample(ArticleExample example);
+    @Select("SELECT DISTINCT DATE_FORMAT(publish_time, '%Y-%m') FROM tb_article ORDER BY DATE_FORMAT(publish_time, '%Y-%m') DESC")
+    List<String> findArchivesDates();
 
-    ArticleWithBLOBs selectByPrimaryKey(Long id);
+    @Select("SELECT id, title, publish_time FROM tb_article WHERE publish_time LIKE CONCAT ('%', #{date} ,'%')")
+    List<Article> findArchivesByDate(String date);
 
-    int updateByPrimaryKeySelective(ArticleWithBLOBs record);
+    @Select("SELECT * FROM tb_article WHERE title LIKE CONCAT('%', #{title}, '%')")
+    List<Article> findFuzzyByTitle(String title);
 
-    int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record);
-
-    int updateByPrimaryKey(Article record);
+    @Select("update tb_article set views = (views + 1) where id = #{id}")
+    void addViews(long id);
 }

@@ -1,21 +1,12 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.Links;
-import me.daydayup.beesite.modules.blog.dao.entity.LinksExample;
 
-public interface LinksMapper {
-    int deleteByPrimaryKey(Long id);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface LinksMapper extends BeesiteMapper<Links> {
 
-    int insert(Links record);
-
-    int insertSelective(Links record);
-
-    List<Links> selectByExample(LinksExample example);
-
-    Links selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Links record);
-
-    int updateByPrimaryKey(Links record);
 }

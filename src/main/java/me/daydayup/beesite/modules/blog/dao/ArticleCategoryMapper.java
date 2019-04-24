@@ -1,21 +1,12 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.ArticleCategory;
-import me.daydayup.beesite.modules.blog.dao.entity.ArticleCategoryExample;
 
-public interface ArticleCategoryMapper {
-    int deleteByPrimaryKey(Long id);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface ArticleCategoryMapper extends BeesiteMapper<ArticleCategory> {
 
-    int insert(ArticleCategory record);
-
-    int insertSelective(ArticleCategory record);
-
-    List<ArticleCategory> selectByExample(ArticleCategoryExample example);
-
-    ArticleCategory selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(ArticleCategory record);
-
-    int updateByPrimaryKey(ArticleCategory record);
 }

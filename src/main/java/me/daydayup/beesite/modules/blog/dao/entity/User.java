@@ -1,19 +1,32 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
-public class User {
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_user")
+public class User implements Serializable {
+
+    @Id
     private Long id;
-
+    @NotNull
     private String username;
-
+    @NotNull
     private String password;
-
     private String salt;
-
     private String avatar;
-
     private String introduce;
-
     private String remark;
+
+    @Transient
+    private String checkPass;
 
     public Long getId() {
         return id;
@@ -28,7 +41,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -36,7 +49,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getSalt() {
@@ -44,7 +57,7 @@ public class User {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
+        this.salt = salt;
     }
 
     public String getAvatar() {
@@ -52,7 +65,7 @@ public class User {
     }
 
     public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
+        this.avatar = avatar;
     }
 
     public String getIntroduce() {
@@ -60,7 +73,7 @@ public class User {
     }
 
     public void setIntroduce(String introduce) {
-        this.introduce = introduce == null ? null : introduce.trim();
+        this.introduce = introduce;
     }
 
     public String getRemark() {
@@ -68,6 +81,14 @@ public class User {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
+    }
+
+    public String getCheckPass() {
+        return checkPass;
+    }
+
+    public void setCheckPass(String checkPass) {
+        this.checkPass = checkPass;
     }
 }

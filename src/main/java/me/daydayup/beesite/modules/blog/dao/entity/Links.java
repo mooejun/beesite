@@ -1,10 +1,24 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
-public class Links {
+import lombok.Data;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_links")
+public class Links implements Serializable {
+
+    @Id
     private Long id;
-
+    @NotNull
     private String name;
-
     private String url;
 
     public Long getId() {
@@ -20,7 +34,7 @@ public class Links {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getUrl() {
@@ -28,6 +42,6 @@ public class Links {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 }

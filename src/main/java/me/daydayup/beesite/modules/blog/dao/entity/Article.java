@@ -1,31 +1,75 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+/**
+ * 文章信息实体
+ *
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_article")
+public class Article implements Serializable {
+
+    @Id
     private Long id;
-
+    @NotNull
     private String title;
-
     private String cover;
-
     private String author;
-
+    private String content;
+    @Column(name = "content_md")
+    private String contentMd;
     private String category;
-
     private String origin;
-
     private String state;
-
     private Long views;
+    private Long type;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "publish_time")
     private Date publishTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "edit_time")
     private Date editTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "create_time")
     private Date createTime;
 
-    private Integer type;
+    @Transient
+    private String tags;
+
+    public Article() {
+    }
+
+    public Article(String category) {
+        this.category = category;
+    }
+
+    public Article(Long id, String category) {
+        this.id = id;
+        this.category = category;
+    }
+
+    public Article(String title, String category) {
+        this.title = title;
+        this.category = category;
+    }
 
     public Long getId() {
         return id;
@@ -40,7 +84,7 @@ public class Article {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getCover() {
@@ -48,7 +92,7 @@ public class Article {
     }
 
     public void setCover(String cover) {
-        this.cover = cover == null ? null : cover.trim();
+        this.cover = cover;
     }
 
     public String getAuthor() {
@@ -56,7 +100,23 @@ public class Article {
     }
 
     public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
+        this.author = author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContentMd() {
+        return contentMd;
+    }
+
+    public void setContentMd(String contentMd) {
+        this.contentMd = contentMd;
     }
 
     public String getCategory() {
@@ -64,7 +124,7 @@ public class Article {
     }
 
     public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
+        this.category = category;
     }
 
     public String getOrigin() {
@@ -72,7 +132,7 @@ public class Article {
     }
 
     public void setOrigin(String origin) {
-        this.origin = origin == null ? null : origin.trim();
+        this.origin = origin;
     }
 
     public String getState() {
@@ -80,7 +140,7 @@ public class Article {
     }
 
     public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+        this.state = state;
     }
 
     public Long getViews() {
@@ -89,6 +149,14 @@ public class Article {
 
     public void setViews(Long views) {
         this.views = views;
+    }
+
+    public Long getType() {
+        return type;
+    }
+
+    public void setType(Long type) {
+        this.type = type;
     }
 
     public Date getPublishTime() {
@@ -115,11 +183,11 @@ public class Article {
         this.createTime = createTime;
     }
 
-    public Integer getType() {
-        return type;
+    public String getTags() {
+        return tags;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }

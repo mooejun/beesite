@@ -1,21 +1,15 @@
 package me.daydayup.beesite.modules.blog.dao;
 
-import java.util.List;
+import me.daydayup.beesite.common.persistence.BeesiteMapper;
 import me.daydayup.beesite.modules.blog.dao.entity.Tags;
-import me.daydayup.beesite.modules.blog.dao.entity.TagsExample;
 
-public interface TagsMapper {
-    int deleteByPrimaryKey(Long id);
+import java.util.List;
 
-    int insert(Tags record);
+/**
+ * @author mooejun
+ * @since 2019/4/24
+ */
+public interface TagsMapper extends BeesiteMapper<Tags> {
 
-    int insertSelective(Tags record);
-
-    List<Tags> selectByExample(TagsExample example);
-
-    Tags selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Tags record);
-
-    int updateByPrimaryKey(Tags record);
+    List<Tags> findByArticleId(long id);
 }

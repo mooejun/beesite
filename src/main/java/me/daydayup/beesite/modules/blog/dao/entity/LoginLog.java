@@ -1,8 +1,27 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class LoginLog {
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Table(name = "tb_login_log")
+@ToString
+@Data
+public class LoginLog implements Serializable {
+
+    @Id
     private Long id;
 
     private String username;
@@ -11,9 +30,15 @@ public class LoginLog {
 
     private String location;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "create_time")
     private Date createTime;
 
     private String device;
+
+    @Transient
+    private String filedTime;
 
     public Long getId() {
         return id;
@@ -28,7 +53,7 @@ public class LoginLog {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getIp() {
@@ -36,7 +61,7 @@ public class LoginLog {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public String getLocation() {
@@ -44,7 +69,7 @@ public class LoginLog {
     }
 
     public void setLocation(String location) {
-        this.location = location == null ? null : location.trim();
+        this.location = location;
     }
 
     public Date getCreateTime() {
@@ -60,6 +85,14 @@ public class LoginLog {
     }
 
     public void setDevice(String device) {
-        this.device = device == null ? null : device.trim();
+        this.device = device;
+    }
+
+    public String getFiledTime() {
+        return filedTime;
+    }
+
+    public void setFiledTime(String filedTime) {
+        this.filedTime = filedTime;
     }
 }

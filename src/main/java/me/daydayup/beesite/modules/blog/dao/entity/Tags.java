@@ -1,9 +1,33 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
-public class Tags {
-    private Long id;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_tags")
+public class Tags implements Serializable {
+
+    @Id
+    private Long id;
+    @NotNull
     private String name;
+
+    @Transient
+    private Long count;
+
+    public Tags() {
+    }
+
+    public Tags(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -18,6 +42,14 @@ public class Tags {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 }

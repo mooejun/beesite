@@ -1,19 +1,39 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
-public class Setting {
-    private Integer id;
+import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_setting")
+public class Setting implements Serializable {
+
+    @Id
+    private Long id;
+    @Column(name = "site_name")
     private String siteName;
-
-    private String siteDonation;
-
+    @Column(name = "site_links")
+    private Object siteLinks;
+    @Column(name = "site_donation")
+    private Object siteDonation;
+    @Column(name = "site_music")
     private String siteMusic;
+    private String about;
+    @Column(name = "about_md")
+    private String aboutMd;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -22,15 +42,23 @@ public class Setting {
     }
 
     public void setSiteName(String siteName) {
-        this.siteName = siteName == null ? null : siteName.trim();
+        this.siteName = siteName;
     }
 
-    public String getSiteDonation() {
+    public Object getSiteLinks() {
+        return siteLinks;
+    }
+
+    public void setSiteLinks(Object siteLinks) {
+        this.siteLinks = siteLinks;
+    }
+
+    public Object getSiteDonation() {
         return siteDonation;
     }
 
-    public void setSiteDonation(String siteDonation) {
-        this.siteDonation = siteDonation == null ? null : siteDonation.trim();
+    public void setSiteDonation(Object siteDonation) {
+        this.siteDonation = siteDonation;
     }
 
     public String getSiteMusic() {
@@ -38,6 +66,22 @@ public class Setting {
     }
 
     public void setSiteMusic(String siteMusic) {
-        this.siteMusic = siteMusic == null ? null : siteMusic.trim();
+        this.siteMusic = siteMusic;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getAboutMd() {
+        return aboutMd;
+    }
+
+    public void setAboutMd(String aboutMd) {
+        this.aboutMd = aboutMd;
     }
 }

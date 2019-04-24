@@ -1,37 +1,48 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Comments {
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@Table(name = "tb_comments")
+public class Comments implements Serializable {
+
+    @Id
     private Long id;
-
+    @Column(name = "p_id")
     private Long pId;
-
+    @Column(name = "c_id")
     private Long cId;
-
+    @Column(name = "article_title")
     private String articleTitle;
-
+    @Column(name = "article_id")
     private Long articleId;
-
+    @NotNull
     private String name;
-
+    @Column(name = "c_name")
     private String cName;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date time;
-
-    private String email;
-
-    private String url;
-
-    private Long type;
-
-    private String ip;
-
-    private String device;
-
-    private String address;
-
     private String content;
+    private String email;
+    private String url;
+    private Long type;
+    private String ip;
+    private String device;
+    private String address;
 
     public Long getId() {
         return id;
@@ -62,7 +73,7 @@ public class Comments {
     }
 
     public void setArticleTitle(String articleTitle) {
-        this.articleTitle = articleTitle == null ? null : articleTitle.trim();
+        this.articleTitle = articleTitle;
     }
 
     public Long getArticleId() {
@@ -78,7 +89,7 @@ public class Comments {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getcName() {
@@ -86,7 +97,7 @@ public class Comments {
     }
 
     public void setcName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+        this.cName = cName;
     }
 
     public Date getTime() {
@@ -97,12 +108,20 @@ public class Comments {
         this.time = time;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getUrl() {
@@ -110,7 +129,7 @@ public class Comments {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public Long getType() {
@@ -126,7 +145,7 @@ public class Comments {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public String getDevice() {
@@ -134,7 +153,7 @@ public class Comments {
     }
 
     public void setDevice(String device) {
-        this.device = device == null ? null : device.trim();
+        this.device = device;
     }
 
     public String getAddress() {
@@ -142,14 +161,6 @@ public class Comments {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.address = address;
     }
 }

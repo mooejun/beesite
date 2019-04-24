@@ -1,8 +1,27 @@
 package me.daydayup.beesite.modules.blog.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Log {
+/**
+ * @author mooejun
+ * @date 2019/4/24
+ */
+@Data
+@ToString
+@Table(name = "tb_log")
+public class SysLog implements Serializable {
+
+    @Id
     private Long id;
 
     private String username;
@@ -17,9 +36,18 @@ public class Log {
 
     private String ip;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "create_time")
     private Date createTime;
 
     private String location;
+
+    /**
+     * 用于搜索条件
+     */
+    @Transient
+    private String timeField;
 
     public Long getId() {
         return id;
@@ -34,7 +62,7 @@ public class Log {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getOperation() {
@@ -42,7 +70,7 @@ public class Log {
     }
 
     public void setOperation(String operation) {
-        this.operation = operation == null ? null : operation.trim();
+        this.operation = operation;
     }
 
     public Long getTime() {
@@ -58,7 +86,7 @@ public class Log {
     }
 
     public void setMethod(String method) {
-        this.method = method == null ? null : method.trim();
+        this.method = method;
     }
 
     public String getParams() {
@@ -66,7 +94,7 @@ public class Log {
     }
 
     public void setParams(String params) {
-        this.params = params == null ? null : params.trim();
+        this.params = params;
     }
 
     public String getIp() {
@@ -74,7 +102,7 @@ public class Log {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public Date getCreateTime() {
@@ -90,6 +118,14 @@ public class Log {
     }
 
     public void setLocation(String location) {
-        this.location = location == null ? null : location.trim();
+        this.location = location;
+    }
+
+    public String getTimeField() {
+        return timeField;
+    }
+
+    public void setTimeField(String timeField) {
+        this.timeField = timeField;
     }
 }
