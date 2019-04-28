@@ -6,7 +6,7 @@ beesite设想继承多个系统模块项目。
 
 集成内容：
 
-* beesite-blog：基于SSM开发的博客系统。
+* beesite-blog：基于SpringBoot开发的博客系统。
 
 # beesite-blog
 
@@ -21,21 +21,19 @@ beesite设想继承多个系统模块项目。
 
 ### 后端
 
-* 基础框架：Spring Boot 2.1.3.RELEASE
+* 基础框架：Spring Boot
 
-* 持久层框架：Mybatis 1.3.1
+* 持久层框架：Mybatis
 
 * 安全框架：Shiro
 
-* 模板引擎：Thymeleaf 3.0.11.RELEASE
+* 模板引擎：Thymeleaf
 
-* 其他：Druid、PageHelper、AOP、
+* 其他：Druid、PageHelper
 
 ### 前端
 
-* 基础框架：ElementUI
-
-* JavaScript框架：Vue.js
+* 基础框架：ElementUI（待定）
 
 ### 开发环境
 
@@ -45,7 +43,7 @@ beesite设想继承多个系统模块项目。
 
 * 依赖管理： Maven
 
-* 数据库： Mysql 5.7.24
+* 数据库： Mysql
 
 ## 写在前面
 
@@ -53,17 +51,17 @@ beesite设想继承多个系统模块项目。
 
 ### 功能
 
-* （已完成）SSM搭建，后期考虑用SpringBoot和Lombok、新的Mybatis性能开发
+* （已完成）SSM搭建，后期考虑用SpringBoot和Lombok、通用mapper能开发
 * （已完成）设计数据库初版。
-* （编码中）搭建粗糙但可用的后台，对表的增删改查。
-* （计划中）翻页功能。
-* （计划中）前端移植。
+* （已完成）搭建粗糙但可用的后台，对表的增删改查。
+* （已完成）翻页功能。
+* （已完成）前端移植。
+* （已完成）更换成SpringBoot。
 * （计划中）用户模块独立。
 * （计划中）博客前台、管理后台响应式设计。
 * （计划中）支持Markdown格式文章的撰写。
 * （计划中）支持文件上传。
 * （计划中）支持音乐定制（网易云、QQ音乐）。
-* （计划中）项目后端管理页面暂定基于Vue.js和ElementUI设计，避免繁琐的DOM操作。
 * （计划中）登录日志记录，IP、地理位置等。
 * （计划中）个性化社交设置。
 
