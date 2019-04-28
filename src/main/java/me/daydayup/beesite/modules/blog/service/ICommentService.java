@@ -6,7 +6,8 @@ import me.daydayup.beesite.modules.blog.model.vo.CommentVoExample;
 import me.daydayup.beesite.modules.blog.model.bo.CommentBo;
 
 /**
- * Created by BlueT on 2017/3/16.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface ICommentService {
 

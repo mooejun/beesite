@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by 13 on 2017/2/23.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class ArchiveBo implements Serializable {
 

@@ -1,29 +1,33 @@
 package me.daydayup.beesite.modules.blog.utils.backup;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class Column {
-	private String name;
-	private String typeName;
-	private int dataType;
+    private String name;
+    private String typeName;
+    private int dataType;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getDataType() {
-		return dataType;
-	}
-	
-	public Column(String name, String typeName, int dataType) {
-		super();
-		this.name = name;
-		this.typeName = typeName;
-		this.dataType = dataType;
-	}
+    public int getDataType() {
+        return dataType;
+    }
 
-	@Override
-	public String toString() {
-		return "Column [name=" + name + ", typeName=" + typeName
-				+ ", dataType=" + dataType + "]";
-	}
+    public Column(String name, String typeName, int dataType) {
+        super();
+        this.name = name;
+        this.typeName = typeName;
+        this.dataType = dataType;
+    }
+
+    @Override
+    public String toString() {
+        return "Column [name=" + name + ", typeName=" + typeName
+                + ", dataType=" + dataType + "]";
+    }
 
 }

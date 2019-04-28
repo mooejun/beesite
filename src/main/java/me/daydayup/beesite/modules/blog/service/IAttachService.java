@@ -4,7 +4,8 @@ import com.github.pagehelper.PageInfo;
 import me.daydayup.beesite.modules.blog.model.vo.AttachVo;
 
 /**
- * Created by wangq on 2017/3/20.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface IAttachService {
     /**

@@ -2,6 +2,10 @@ package me.daydayup.beesite.modules.blog.utils.backup.db;
 
 import java.util.Date;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class Row {
     private Object[] data;
     private DataTable dataTable;

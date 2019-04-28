@@ -1,12 +1,12 @@
 package me.daydayup.beesite.modules.blog.utils.backup;
 
 import java.util.ArrayList;
-
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class TableCollection extends ArrayList<Table> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5824322959198795936L;
 
 	/**

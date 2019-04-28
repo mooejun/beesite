@@ -3,7 +3,10 @@ package me.daydayup.beesite.modules.blog.model.vo;
 import java.io.Serializable;
 
 /**
- * @author 
+ * 后台统计对象
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class AttachVo implements Serializable {
     private Integer id;

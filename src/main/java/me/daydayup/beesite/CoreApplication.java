@@ -15,6 +15,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 @MapperScan("me.daydayup.beesite.modules.blog.dao")
 @SpringBootApplication
 @EnableTransactionManagement
@@ -38,7 +42,6 @@ public class CoreApplication {
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(CoreApplication.class, args);

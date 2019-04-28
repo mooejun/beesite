@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by BlueT on 2017/3/3.
+ * @author mooejun
+ * @since 2019/4/28
  */
 @Component
 public class WebConst {

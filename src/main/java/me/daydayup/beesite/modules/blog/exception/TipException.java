@@ -1,5 +1,9 @@
 package me.daydayup.beesite.modules.blog.exception;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class TipException extends RuntimeException {
 
     public TipException() {

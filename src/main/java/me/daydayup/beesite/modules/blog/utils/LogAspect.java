@@ -14,6 +14,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 @Aspect
 @Component
 public class LogAspect {

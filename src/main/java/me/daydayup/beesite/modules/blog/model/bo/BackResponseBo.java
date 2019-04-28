@@ -3,7 +3,8 @@ package me.daydayup.beesite.modules.blog.model.bo;
 import java.io.Serializable;
 
 /**
- * Created by 13 on 2017/2/25.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class BackResponseBo implements Serializable {
 

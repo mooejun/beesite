@@ -2,7 +2,9 @@ package me.daydayup.beesite.modules.blog.dto;
 
 /**
  * 错误提示
- * Created by 13 on 2017/2/26.
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface ErrorCode {
 

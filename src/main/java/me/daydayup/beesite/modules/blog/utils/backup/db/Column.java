@@ -1,5 +1,9 @@
 package me.daydayup.beesite.modules.blog.utils.backup.db;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class Column {
 	private String catalogName;
 	private String schemaName;

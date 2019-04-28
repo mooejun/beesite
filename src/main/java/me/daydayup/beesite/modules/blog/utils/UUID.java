@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * 封装UUID
+ * @author mooejun
+ * @since 2019/4/28
  */
 public abstract class UUID {
 

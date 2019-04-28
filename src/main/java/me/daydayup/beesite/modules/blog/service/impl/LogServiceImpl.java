@@ -15,7 +15,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by BlueT on 2017/3/4.
+ * @author mooejun
+ * @since 2019/4/28
  */
 @Service
 public class LogServiceImpl implements ILogService {

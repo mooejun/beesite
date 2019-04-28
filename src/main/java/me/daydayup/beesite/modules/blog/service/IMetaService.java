@@ -6,8 +6,8 @@ import me.daydayup.beesite.modules.blog.model.vo.MetaVo;
 import java.util.List;
 
 /**
- * 分类信息service接口
- * Created by BlueT on 2017/3/17.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface IMetaService {
     /**

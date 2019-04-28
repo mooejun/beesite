@@ -1,5 +1,9 @@
 package me.daydayup.beesite.modules.blog.utils.backup;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public class FK {
     private String column;
     private Table referenceTable;

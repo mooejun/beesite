@@ -3,7 +3,8 @@ package me.daydayup.beesite.modules.blog.service;
 import me.daydayup.beesite.modules.blog.model.vo.UserVo;
 
 /**
- * Created by BlueT on 2017/3/3.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface IUserService {
 
@@ -18,23 +19,23 @@ public interface IUserService {
 
     /**
      * 通过uid查找对象
+     *
      * @param uid
-     * @return
      */
     UserVo queryUserById(Integer uid);
 
     /**
      * 用戶登录
+     *
      * @param username
      * @param password
-     * @return
      */
     UserVo login(String username, String password);
 
     /**
      * 根据主键更新user对象
+     *
      * @param userVo
-     * @return
      */
     void updateByUid(UserVo userVo);
 }

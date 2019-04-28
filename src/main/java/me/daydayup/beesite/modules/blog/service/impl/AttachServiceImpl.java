@@ -16,7 +16,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by wangq on 2017/3/20.
+ * @author mooejun
+ * @since 2019/4/28
  */
 @Service
 public class AttachServiceImpl implements IAttachService {
@@ -36,7 +37,7 @@ public class AttachServiceImpl implements IAttachService {
 
     @Override
     public AttachVo selectById(Integer id) {
-        if(null != id){
+        if (null != id) {
             return attachDao.selectByPrimaryKey(id);
         }
         return null;
@@ -58,7 +59,7 @@ public class AttachServiceImpl implements IAttachService {
     @Transactional
     public void deleteById(Integer id) {
         if (null != id) {
-            attachDao.deleteByPrimaryKey( id);
+            attachDao.deleteByPrimaryKey(id);
         }
     }
 }

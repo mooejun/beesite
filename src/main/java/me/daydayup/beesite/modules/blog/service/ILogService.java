@@ -5,7 +5,8 @@ import me.daydayup.beesite.modules.blog.model.vo.LogVo;
 import java.util.List;
 
 /**
- * Created by BlueT on 2017/3/4.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface ILogService {
 

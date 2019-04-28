@@ -5,7 +5,8 @@ import me.daydayup.beesite.modules.blog.model.vo.ContentVoExample;
 import me.daydayup.beesite.modules.blog.model.vo.ContentVo;
 
 /**
- * Created by Administrator on 2017/3/13 013.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public interface IContentService {
 

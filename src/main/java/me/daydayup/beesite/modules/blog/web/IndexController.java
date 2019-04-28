@@ -34,8 +34,8 @@ import java.net.URLEncoder;
 import java.util.List;
 
 /**
- * 首页
- * Created by Administrator on 2017/3/8 008.
+ * @author mooejun
+ * @since 2019/4/28
  */
 @Controller
 public class IndexController extends BaseController {

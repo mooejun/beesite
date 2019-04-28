@@ -2,7 +2,9 @@ package me.daydayup.beesite.modules.blog.dto;
 
 /**
  * 日志表的action字段
- * Created by BlueT on 2017/3/4.
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public enum LogActions {
 

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 /**
  * 后台统计对象
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class StatisticsBo implements Serializable {
 

@@ -7,7 +7,8 @@ import me.daydayup.beesite.modules.blog.utils.MapCache;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by 13 on 2017/2/21.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public abstract class BaseController {
 

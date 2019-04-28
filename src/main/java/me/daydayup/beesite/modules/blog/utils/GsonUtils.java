@@ -3,8 +3,8 @@ package me.daydayup.beesite.modules.blog.utils;
 import com.google.gson.Gson;
 
 /**
- * json转换工具
- * Created by Administrator on 2017/3/13 013.
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class GsonUtils {
 

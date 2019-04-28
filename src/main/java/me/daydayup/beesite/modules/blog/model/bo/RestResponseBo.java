@@ -2,8 +2,9 @@ package me.daydayup.beesite.modules.blog.model.bo;
 
 /**
  * rest返回对象
- *^
- * @param <T>
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class RestResponseBo<T> {
 

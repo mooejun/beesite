@@ -7,7 +7,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * zip压缩工具类
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class ZipUtils {
 
@@ -23,11 +24,11 @@ public class ZipUtils {
         zip.close();
     }
 
-    public static void zipFile(String filePath, String zipPath) throws Exception{
+    public static void zipFile(String filePath, String zipPath) throws Exception {
         byte[] buffer = new byte[1024];
         FileOutputStream fos = new FileOutputStream(zipPath);
         ZipOutputStream zos = new ZipOutputStream(fos);
-        ZipEntry ze= new ZipEntry("spy.log");
+        ZipEntry ze = new ZipEntry("spy.log");
         zos.putNextEntry(ze);
         FileInputStream in = new FileInputStream(filePath);
         int len;

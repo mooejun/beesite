@@ -1,8 +1,11 @@
 package me.daydayup.beesite.modules.blog.dto;
 
+
 /**
  * 建立数据库连接的参数对象
- * Created by BlueT on 2017/3/4.
+ *
+ * @author mooejun
+ * @since 2019/4/28
  */
 public class DataSource {
 

@@ -1,5 +1,9 @@
 package me.daydayup.beesite.modules.blog.dto;
 
+/**
+ * @author mooejun
+ * @since 2019/4/28
+ */
 public enum Types {
     TAG("tag"),
     CATEGORY("category"),
